@@ -185,7 +185,7 @@ async function executePhase(
     return false;
   }
 
-  //@ts-ignore
+  //@ts-expect-error and some text
   const executionEnvironment: ExecutionEnvironment<any> =
     createExecutionEnvironment(node, environment);
 
