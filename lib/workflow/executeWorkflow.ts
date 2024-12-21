@@ -185,6 +185,7 @@ async function executePhase(
     return false;
   }
 
+  //@ts-ignore
   const executionEnvironment: ExecutionEnvironment<any> =
     createExecutionEnvironment(node, environment);
 
