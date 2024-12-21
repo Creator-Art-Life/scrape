@@ -37,6 +37,7 @@ export async function ExecuteWorkflow(executionId: string) {
   await initializePhaseStatuses(execution);
 
   let creditsConsumed = 0;
+  creditsConsumed = creditsConsumed; //vercel
   let executionFailed = false;
   for (const phase of execution.phases) {
     // TODO: consume credits
