@@ -5,11 +5,11 @@ import React from "react";
 import Editor from "../../_components/Editor";
 
 type PageProps = {
-  params: { workflowId: string };
+  params: Promise<{ workflowId: string }>;
 };
 
 async function page({ params }: PageProps) {
-  const { workflowId } = params;
+  const { workflowId } = await params;
   const { userId } = await auth();
   if (!userId) return <div>unauthenticated</div>;
 
