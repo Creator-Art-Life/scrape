@@ -1,13 +1,17 @@
-import { waitFor } from '@/lib/helper/waitFor';
-import prisma from '@/lib/prisma';
-import { auth } from '@clerk/nextjs/server';
-import React from 'react'
-import Editor from '../../_components/Editor';
+import { waitFor } from "@/lib/helper/waitFor";
+import prisma from "@/lib/prisma";
+import { auth } from "@clerk/nextjs/server";
+import React from "react";
+import Editor from "../../_components/Editor";
 
-async function page({ params }: { params: { workflowId: string } }) {
+type PageProps = {
+  params: { workflowId: string };
+};
+
+async function page({ params }: PageProps) {
   const { workflowId } = await params;
-  const { userId } = await auth()
-  if (!userId) return <div>unauthenticated</div>
+  const { userId } = await auth();
+  if (!userId) return <div>unauthenticated</div>;
 
   await waitFor(5000);
 
@@ -15,15 +19,13 @@ async function page({ params }: { params: { workflowId: string } }) {
     where: {
       id: workflowId,
       userId,
-    }
-  })
+    },
+  });
 
   if (!workflow) {
     return <div>Workflow not found</div>;
   }
 
-  return (
-    <Editor workflow={workflow} />
-  )
+  return <Editor workflow={workflow} />;
 }
-export default page
+export default page;
