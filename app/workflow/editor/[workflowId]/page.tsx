@@ -9,7 +9,7 @@ type PageProps = {
 };
 
 async function page({ params }: PageProps) {
-  const { workflowId } = await params;
+  const { workflowId } = params;
   const { userId } = await auth();
   if (!userId) return <div>unauthenticated</div>;
 
