@@ -3,16 +3,16 @@ import TopBar from "../../_components/topbar/TopBar";
 import { Suspense } from "react";
 import { InboxIcon, Loader2Icon } from "lucide-react";
 import ExecutionsTable from "./_components/ExecutionsTable";
+type Props = {
+  params: Promise<{ workflowId: string }>;
+};
 
-export default function Executionage({
-  params,
-}: {
-  params: { workflowId: string };
-}) {
+export default async function Executionage({ params }: Props) {
+  const { workflowId } = await params;
   return (
     <div className="h-full w-full overflow-auto">
       <TopBar
-        workflowId={params.workflowId}
+        workflowId={workflowId}
         hideButtons
         title="All runs"
         subtitle="List of all your workflow runs"
@@ -25,7 +25,7 @@ export default function Executionage({
           </div>
         }
       >
-        <ExecutionsTableWrapper workflowId={params.workflowId} />
+        <ExecutionsTableWrapper workflowId={workflowId} />
       </Suspense>
     </div>
   );
