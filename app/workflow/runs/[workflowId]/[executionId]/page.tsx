@@ -1,7 +1,5 @@
 import { GetWorkflowExecutionWithPhases } from "@/actions/workflows/GetWorkflowExecutionWithPhases";
 import TopBar from "@/app/workflow/_components/topbar/TopBar";
-import { waitFor } from "@/lib/helper/waitFor";
-import { auth } from "@clerk/nextjs/server";
 import { Loader2Icon } from "lucide-react";
 import { Suspense } from "react";
 import ExecutionViewer from "./_components/ExecutionViewer";
