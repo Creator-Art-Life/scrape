@@ -1,17 +1,18 @@
-'use client';
+"use client";
 
-import { usePathname } from 'next/navigation';
-import React from 'react'
+import { usePathname } from "next/navigation";
+import React from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-} from './ui/breadcrumb';
-import { MobileSidebar } from './Sidebar';
+} from "./ui/breadcrumb";
+import { MobileSidebar } from "./Sidebar";
+import { ArrowRight } from "lucide-react";
 
 function BreadcrumbHeader() {
-  const pathName = usePathname()
+  const pathName = usePathname();
   const paths = pathName === "/" ? [""] : pathName?.split("/");
   return (
     <div className="flex items-center flex-start">
@@ -21,11 +22,13 @@ function BreadcrumbHeader() {
           {paths.map((path, index) => (
             <React.Fragment key={index}>
               <BreadcrumbItem>
-                <BreadcrumbLink
-                  href={`${path}`}
-                  className="capitalize"
-                >
-                  {path === "" ? "home" : path}
+                <BreadcrumbLink href={`${path}`} className="capitalize">
+                  <div className="flex items-center gap-2">
+                    {path === "" ? "home" : path}
+                    {index === Array.length - 1 && (
+                      <ArrowRight className="w-4 h-4 text-gray-500" />
+                    )}
+                  </div>
                 </BreadcrumbLink>
               </BreadcrumbItem>
             </React.Fragment>
@@ -33,7 +36,7 @@ function BreadcrumbHeader() {
         </BreadcrumbList>
       </Breadcrumb>
     </div>
-  )
+  );
 }
 
-export default BreadcrumbHeader
+export default BreadcrumbHeader;

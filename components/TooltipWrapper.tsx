@@ -1,6 +1,11 @@
-'use client';
-import React, { ReactNode } from 'react'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
+"use client";
+import React, { ReactNode } from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 interface Props {
   children: ReactNode;
@@ -9,6 +14,7 @@ interface Props {
 }
 
 function TooltipWrapper(props: Props) {
+  if (!props.content) return props.children;
   return (
     <TooltipProvider delayDuration={0}>
       <Tooltip>
@@ -16,7 +22,7 @@ function TooltipWrapper(props: Props) {
         <TooltipContent side={props.side}>{props.content}</TooltipContent>
       </Tooltip>
     </TooltipProvider>
-  )
+  );
 }
 
-export default TooltipWrapper
+export default TooltipWrapper;
