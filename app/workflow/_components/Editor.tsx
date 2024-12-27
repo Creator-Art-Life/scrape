@@ -6,7 +6,7 @@ import TopBar from "./topbar/TopBar";
 import TaskMenu from "./TaskMenu";
 import { FlowValidationContextProvider } from "@/components/context/FlowValidationContext";
 import { WorkflowStatus } from "@/types/workflow";
-import MobileWarning from "@/hooks/mobile-warning.tsx";
+import MobileWarning from "@/hooks/mobile-warning";
 import { AppWindow } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
