@@ -1,5 +1,6 @@
 "use client";
 
+import TooltipWrapper from "@/components/TooltipWrapper";
 import {
   Accordion,
   AccordionContent,
@@ -9,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { TaskRegistry } from "@/lib/workflow/task/registry";
 import { TaskType } from "@/types/task";
+import Link from "next/link";
 
 export default function TaskMenu() {
   return (
@@ -34,6 +36,7 @@ export default function TaskMenu() {
           <AccordionContent className="flex flex-col gap-1">
             <TaskMenuBtn taskType={TaskType.PAGE_TO_HTML} />
             <TaskMenuBtn taskType={TaskType.EXTRACT_TEXT_FROM_ELEMENT} />
+            <TaskMenuBtn taskType={TaskType.EXTRACT_DATA_WITH_AI} />
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="timing">
@@ -71,10 +74,23 @@ function TaskMenuBtn({ taskType }: { taskType: TaskType }) {
       draggable
       onDragStart={(event) => onDragStart(event, taskType)}
     >
-      <div className="flex gap-2">
-        <task.icon size={20} />
-        {task.label}
-      </div>
+      {task.sublabel ? (
+        <TooltipWrapper href="/warning" content={task.sublabel}>
+          <div className="flex items-center gap-3">
+            <task.icon size={20} />
+            <div className="flex flex-col">
+              <span>{task.label}</span>
+            </div>
+          </div>
+        </TooltipWrapper>
+      ) : (
+        <div className="flex items-center gap-3">
+          <task.icon size={20} />
+          <div className="flex flex-col">
+            <span>{task.label}</span>
+          </div>
+        </div>
+      )}
     </Button>
   );
 }

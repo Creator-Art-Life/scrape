@@ -1,4 +1,5 @@
 "use client";
+
 import React, { ReactNode } from "react";
 import {
   Tooltip,
@@ -6,23 +7,39 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "./ui/tooltip";
+import Link from "next/link";
 
-interface Props {
+interface TooltipWrapperProps {
   children: ReactNode;
   content: ReactNode;
   side?: "top" | "bottom" | "left" | "right";
+  href?: string;
 }
 
-function TooltipWrapper(props: Props) {
-  if (!props.content) return props.children;
+const TooltipWrapper: React.FC<TooltipWrapperProps> = ({
+  children,
+  content,
+  side = "top",
+  href,
+}) => {
+  if (!content) return <>{children}</>;
+
+  const TooltipContentWrapper = (
+    <TooltipContent side={side}>{content}</TooltipContent>
+  );
+
   return (
     <TooltipProvider delayDuration={0}>
       <Tooltip>
-        <TooltipTrigger asChild>{props.children}</TooltipTrigger>
-        <TooltipContent side={props.side}>{props.content}</TooltipContent>
+        <TooltipTrigger asChild>{children}</TooltipTrigger>
+        {href ? (
+          <Link href={href}>{TooltipContentWrapper}</Link>
+        ) : (
+          TooltipContentWrapper
+        )}
       </Tooltip>
     </TooltipProvider>
   );
-}
+};
 
 export default TooltipWrapper;

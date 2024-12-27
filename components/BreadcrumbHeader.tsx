@@ -7,6 +7,7 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
+  BreadcrumbSeparator,
 } from "./ui/breadcrumb";
 import { MobileSidebar } from "./Sidebar";
 import { ArrowRight } from "lucide-react";
@@ -28,9 +29,7 @@ function BreadcrumbHeader() {
                   </div>
                 </BreadcrumbLink>
               </BreadcrumbItem>
-              {index < paths.length - 1 && (
-                <ArrowRight className="w-4 h-4 text-gray-500" />
-              )}
+              {index !== paths.length - 1 && <BreadcrumbSeparator />}
             </React.Fragment>
           ))}
         </BreadcrumbList>
