@@ -1,3 +1,5 @@
+"use client";
+
 import { Workflow } from "@prisma/client";
 import React from "react";
 import { ReactFlowProvider } from "@xyflow/react";
@@ -11,12 +13,14 @@ import { AppWindow } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 function Editor({ workflow }: { workflow: Workflow }) {
-  const isMobile = useIsMobile({ point: 1025 });
+  const isMobile = useIsMobile();
   if (isMobile) {
     return (
-      <MobileWarning text="Back" link={"/workflows"} icon={<AppWindow />}>
-        {/* Это нужно, чтобы содержимое MobileWarning рендерилось правильно */}
-      </MobileWarning>
+      <MobileWarning
+        text="Back"
+        link={"/workflows"}
+        icon={<AppWindow />}
+      ></MobileWarning>
     );
   }
 

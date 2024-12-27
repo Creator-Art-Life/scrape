@@ -1,3 +1,4 @@
+"use client";
 import { UpdateWorkflowCron } from "@/actions/workflows/updateWorkflowCron";
 import CustomDialogHeader from "@/components/CustomDialogHeader";
 import { Button } from "@/components/ui/button";

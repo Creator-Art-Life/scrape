@@ -27,7 +27,7 @@ const MobileWarning: React.FC<Props> = ({
   icon,
   point,
 }) => {
-  const isMobile = useIsMobile({ point: point ?? undefined });
+  const isMobile = useIsMobile({ point: point ?? 768 });
 
   {
     if (isMobile) {
