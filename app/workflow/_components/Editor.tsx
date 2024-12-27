@@ -8,27 +8,35 @@ import { FlowValidationContextProvider } from "@/components/context/FlowValidati
 import { WorkflowStatus } from "@/types/workflow";
 import MobileWarning from "@/hooks/mobile-warning.tsx";
 import { AppWindow } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 function Editor({ workflow }: { workflow: Workflow }) {
+  const isMobile = useIsMobile({ point: 1025 });
+  if (isMobile) {
+    return (
+      <MobileWarning text="Back" link={"/workflows"} icon={<AppWindow />}>
+        {/* Это нужно, чтобы содержимое MobileWarning рендерилось правильно */}
+      </MobileWarning>
+    );
+  }
+
   return (
-    <MobileWarning text="Back" link={"/workflows"} icon={<AppWindow />}>
-      <FlowValidationContextProvider>
-        <ReactFlowProvider>
-          <div className="flex flex-col h-full w-full overflow-hidden">
-            <TopBar
-              title="Workflow Editor"
-              subtitle={workflow.name}
-              workflowId={workflow.id}
-              isPublished={workflow.status === WorkflowStatus.PUBLISHED}
-            />
-            <section className="flex h-full overflow-auto">
-              <TaskMenu />
-              <FlowEditor workflow={workflow} />
-            </section>
-          </div>
-        </ReactFlowProvider>
-      </FlowValidationContextProvider>
-    </MobileWarning>
+    <FlowValidationContextProvider>
+      <ReactFlowProvider>
+        <div className="flex flex-col h-full w-full overflow-hidden">
+          <TopBar
+            title="Workflow Editor"
+            subtitle={workflow.name}
+            workflowId={workflow.id}
+            isPublished={workflow.status === WorkflowStatus.PUBLISHED}
+          />
+          <section className="flex h-full overflow-auto">
+            <TaskMenu />
+            <FlowEditor workflow={workflow} />
+          </section>
+        </div>
+      </ReactFlowProvider>
+    </FlowValidationContextProvider>
   );
 }
 

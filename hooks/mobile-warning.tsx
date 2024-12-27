@@ -13,14 +13,22 @@ import React, { ReactNode, useEffect, useState } from "react";
 import { useIsMobile } from "./use-mobile";
 
 interface Props {
-  children: ReactNode;
+  children?: ReactNode;
   text: string;
   link: string;
   icon: ReactNode;
+  point?: number;
 }
 
-const MobileWarning: React.FC<Props> = ({ children, text, link, icon }) => {
-  const isMobile = useIsMobile();
+const MobileWarning: React.FC<Props> = ({
+  children,
+  text,
+  link,
+  icon,
+  point,
+}) => {
+  const isMobile = useIsMobile({ point: point ?? undefined });
+
   {
     if (isMobile) {
       return (
@@ -45,7 +53,7 @@ const MobileWarning: React.FC<Props> = ({ children, text, link, icon }) => {
     }
   }
 
-  return <>{children}</>;
+  return <>{children ?? null}</>;
 };
 
 export default MobileWarning;

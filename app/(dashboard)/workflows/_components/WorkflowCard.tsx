@@ -175,8 +175,8 @@ function ScheduleSection({
   workflowId: string;
   cron: string | null;
 }) {
-  if (isDraft) return null;
   const isMobile = useIsMobile({ point: 800 });
+  if (isDraft) return null;
   return (
     <div>
       {isMobile ? (
@@ -229,30 +229,41 @@ function LastRunDetails({ workflow }: { workflow: Workflow }) {
         {lastRunAt && (
           <Link
             href={`/workflow/runs/${workflow.id}/${lastRunId}`}
-            className="flex items-center text-sm gap-2 group"
+            className="flex flex-col sm:flex-row items-start sm:items-center text-sm gap-2 group"
           >
-            <span>Last run:</span>
-            <ExecutionStatusIndicator
-              status={lastRunStatus as WorkflowExecutionStatus}
-            />
-            <ExecutionStatusLabel
-              status={lastRunStatus as WorkflowExecutionStatus}
-            />
-            <span>{formattedStartedAt}</span>
+            <div className="flex items-center gap-2">
+              <span>Last run:</span>
+              <ExecutionStatusIndicator
+                status={lastRunStatus as WorkflowExecutionStatus}
+              />
+
+              <span className="hidden sm:inline">
+                <ExecutionStatusLabel
+                  status={lastRunStatus as WorkflowExecutionStatus}
+                />
+              </span>
+            </div>
+
+            <span className="sm:ml-2 sm:mt-0 -mt-1">{formattedStartedAt}</span>
+
             <ChevronRightIcon
               size={14}
-              className="-translate-x-[2px] group-hover:translate-x-0 transition"
+              className="hidden sm:inline -translate-x-[2px] group-hover:translate-x-0 transition"
             />
           </Link>
         )}
         {!lastRunAt && <p>No runs yet</p>}
       </div>
       {nextRunAt && (
-        <div className="flex items-center text-sm gap-2">
-          <ClockIcon size={12} />
-          <span>Next run at:</span>
-          <span>{nextSchedule}</span>
-          <span className="text-xs">({nextScheduleUTC} UTC)</span>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center text-sm gap-2">
+          <div className="flex items-center gap-1">
+            <ClockIcon size={12} />
+            <span>Next run at:</span>
+          </div>
+          <div className="flex items-center gap-1 -mt-1">
+            <span>{nextSchedule}</span>
+            <span className="text-xs">({nextScheduleUTC} UTC)</span>
+          </div>
         </div>
       )}
     </div>

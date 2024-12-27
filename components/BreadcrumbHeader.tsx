@@ -25,12 +25,12 @@ function BreadcrumbHeader() {
                 <BreadcrumbLink href={`${path}`} className="capitalize">
                   <div className="flex items-center gap-2">
                     {path === "" ? "home" : path}
-                    {index === Array.length - 1 && (
-                      <ArrowRight className="w-4 h-4 text-gray-500" />
-                    )}
                   </div>
                 </BreadcrumbLink>
               </BreadcrumbItem>
+              {index < paths.length - 1 && (
+                <ArrowRight className="w-4 h-4 text-gray-500" />
+              )}
             </React.Fragment>
           ))}
         </BreadcrumbList>
