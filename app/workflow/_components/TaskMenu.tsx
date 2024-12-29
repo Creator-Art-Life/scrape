@@ -75,7 +75,14 @@ function TaskMenuBtn({ taskType }: { taskType: TaskType }) {
       onDragStart={(event) => onDragStart(event, taskType)}
     >
       {task.sublabel ? (
-        <TooltipWrapper href="/warning" content={task.sublabel}>
+        <TooltipWrapper
+          href="/warning"
+          content={
+            <p className="cursor-pointer hover:underline font-bold">
+              {task.sublabel}
+            </p>
+          }
+        >
           <div className="flex items-center gap-3">
             <task.icon size={20} />
             <div className="flex flex-col">

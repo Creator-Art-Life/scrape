@@ -15,6 +15,7 @@ import { ArrowRight } from "lucide-react";
 function BreadcrumbHeader() {
   const pathName = usePathname();
   const paths = pathName === "/" ? [""] : pathName?.split("/");
+  console.log(paths);
   return (
     <div className="flex items-center flex-start">
       <MobileSidebar />
@@ -23,7 +24,10 @@ function BreadcrumbHeader() {
           {paths.map((path, index) => (
             <React.Fragment key={index}>
               <BreadcrumbItem>
-                <BreadcrumbLink href={`${path}`} className="capitalize">
+                <BreadcrumbLink
+                  href={`/${paths.slice(1, index + 1).join("/")}`}
+                  className="capitalize"
+                >
                   <div className="flex items-center gap-2">
                     {path === "" ? "home" : path}
                   </div>
