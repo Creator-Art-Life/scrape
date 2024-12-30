@@ -14,9 +14,9 @@ export default function DocsPage() {
           Introduction
         </h1>
         <p className="text-base text-muted-foreground">
-          Welcome to our website! Whether you're here to explore, manage your
-          account, or access various services, this guide will help you get up
-          to speed. Below, you&apos;ll find step-by-step instructions for
+          Welcome to our website! Whether you&apos;re here to explore, manage
+          your account, or access various services, this guide will help you get
+          up to speed. Below, you&apos;ll find step-by-step instructions for
           navigating through the site and making the most of its features.
         </p>
       </div>
