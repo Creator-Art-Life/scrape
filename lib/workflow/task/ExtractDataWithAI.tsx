@@ -5,7 +5,7 @@ import { BrainIcon } from "lucide-react";
 export const ExtractDataWithAITask = {
   type: TaskType.EXTRACT_DATA_WITH_AI,
   label: "Extract data with ai",
-  sublabel: "it doesn't work now",
+  sublabel: "How its work?",
   icon: (props) => <BrainIcon className="stroke-rose-400" {...props} />,
   isEntryPoint: false,
   credits: 4,

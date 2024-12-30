@@ -4,7 +4,6 @@ import { ExtractDataWithAITask } from "../task/ExtractDataWithAI";
 import prisma from "@/lib/prisma";
 import { symmetricDecrypt } from "@/lib/encryption";
 import OpenAi from "openai";
-import { waitFor } from "@/lib/helper/waitFor";
 
 export async function ExtractDataWithAIExecutor(
   environment: ExecutionEnvironment<typeof ExtractDataWithAITask>
