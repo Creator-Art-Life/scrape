@@ -19,6 +19,9 @@ function BreadcrumbHeader() {
   console.log(paths);
   return (
     <div className="flex items-center flex-start">
+      <div className="mr-5">
+        <Logo fontSize="text-sm" />
+      </div>
       <MobileSidebar />
       <Breadcrumb>
         <BreadcrumbList>

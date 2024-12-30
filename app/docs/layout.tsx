@@ -11,6 +11,8 @@ import BreadcrumbHeader from "@/components/BreadcrumbHeader";
 import { ModeToggle } from "@/components/ThemeModeToggle";
 import Sign from "@/components/Sign";
 import DesktopSidebar from "@/components/Sidebar";
+import DocsDesktopSidebar from "@/components/DocsSidebar";
+import DocsBreadcrumbHeader from "@/components/DocsBreadcrumbHeader";
 
 interface LayoutProps {
   children: ReactNode;
@@ -21,7 +23,7 @@ const Layout = ({ children }: LayoutProps) => {
     <div className="flex h-screen flex-col">
       {/* Header */}
       <header className="flex items-center justify-between px-6 py-4 h-[50px]">
-        <BreadcrumbHeader />
+        <DocsBreadcrumbHeader />
         <div className="gap-1 flex items-center">
           <ModeToggle />
           <Sign />
@@ -29,12 +31,9 @@ const Layout = ({ children }: LayoutProps) => {
       </header>
       <Separator />
 
-      {/* Main layout with Sidebar and Content */}
       <div className="flex flex-1">
         {/* Sidebar */}
-        <DesktopSidebar />
-
-        {/* Main Content */}
+        <DocsDesktopSidebar />
         <div className="flex-1 p-4">{children}</div>
       </div>
     </div>
