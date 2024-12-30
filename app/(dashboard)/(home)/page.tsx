@@ -88,11 +88,11 @@ function StatsCardSkeleton() {
   );
 }
 
-async function StatsExecutionStatus({
-  selectedPeriod,
-}: {
+type PropsStat = {
   selectedPeriod: Period;
-}) {
+};
+
+async function StatsExecutionStatus({ selectedPeriod }: PropsStat) {
   const data = await GetWorkflowExecutionsStats(selectedPeriod);
   return <ExecutionStatusChart data={data} />;
 }
