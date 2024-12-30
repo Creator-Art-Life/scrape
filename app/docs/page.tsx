@@ -16,17 +16,17 @@ export default function DocsPage() {
         <p className="text-base text-muted-foreground">
           Welcome to our website! Whether you're here to explore, manage your
           account, or access various services, this guide will help you get up
-          to speed. Below, you'll find step-by-step instructions for navigating
-          through the site and making the most of its features.
+          to speed. Below, you&apos;ll find step-by-step instructions for
+          navigating through the site and making the most of its features.
         </p>
       </div>
       <div className="pb-12 pt-8">
         <div className="mdx">
           <p className="leading-7">
-            This is <strong>NOT</strong> just a browser automation tool. It's a
-            platform offering pre-built tasks that simplify web scraping and
-            automation. No coding required—just configure, execute, and watch
-            your workflows in action.
+            This is <strong>NOT</strong> just a browser automation tool.
+            It&apos;s a platform offering pre-built tasks that simplify web
+            scraping and automation. No coding required—just configure, execute,
+            and watch your workflows in action.
           </p>
           <p className="leading-7 mt-6">
             <strong>What makes it unique?</strong>
