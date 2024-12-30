@@ -17,7 +17,7 @@ import { useMutation } from "@tanstack/react-query";
 import { CoinsIcon, CreditCard } from "lucide-react";
 import React, { useState } from "react";
 
-export default function creditsPurchase() {
+export default function CreditsPurchase() {
   const [selectedPack, setSelectedPack] = useState(PackId.MEDIUM);
 
   const mutation = useMutation({
