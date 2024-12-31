@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "postinstall": "prisma generate && npx puppeteer browsers install chrome"
+    "build": "[ -e node_modules/puppeteer/.local-chromium ] || npx puppeteer browsers install chrome && next build",
+    "start": "[ -e node_modules/puppeteer/.local-chromium ] || npx puppeteer browsers install chrome && next start",
+    "lint": "next lint", 
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.8.2",
